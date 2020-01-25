@@ -1,15 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {Output} from './Terminal-Output/Output'
 import './App.css';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-      <input type="text"></input>
-      </header>
-    </div>
-  );
+
+
+export class App extends Component<{},{inputList:string[], value:string}>{
+
+  constructor(props:any)
+  {
+    super(props);
+    this.state = {inputList:["Input1", "Input2"],value:"" };
+  }
+  addList()
+  {
+    this.setState(prevState => ({
+      inputList: [...prevState.inputList, prevState.value],
+      value: ""
+    }))
+  }
+  updateInput = (event: React.ChangeEvent<HTMLInputElement>)=> {
+    this.setState({
+      value: event.target.value
+    })
+  }
+  onEnterPress = (e:any) => {
+    if(e.keyCode == 13) {
+      if(this.state.value!="")
+      this.addList()
+    }
+  }
+
+  render() {
+    return (  
+      <div className="App">
+        {Output(this.state.inputList)}
+        <header className="App-header">
+        <input  onChange={this.updateInput} onKeyDown={this.onEnterPress} type="text" value={this.state.value} ></input>
+        </header>
+      </div>
+    )
+    
+  }
+
 }
 
 export default App;
