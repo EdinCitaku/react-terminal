@@ -11,6 +11,8 @@ export class App extends Component<{},{inputList:string[], value:string}>{
     super(props);
     this.state = {inputList:["Input1", "Input2"],value:"" };
   }
+
+  
   addList()
   {
     this.setState(prevState => ({
@@ -32,12 +34,17 @@ export class App extends Component<{},{inputList:string[], value:string}>{
 
   render() {
     return (  
-      <div className="App">
-        {Output(this.state.inputList)}
-        <header className="App-header">
+          <div className="App-body">
+                    {Output(this.state.inputList)}
+
+        <div className="fill-space">
+        </div>
+        <footer>
         <input  onChange={this.updateInput} onKeyDown={this.onEnterPress} type="text" value={this.state.value} ></input>
-        </header>
-      </div>
+        </footer>
+        </div>
+        
+        
     )
     
   }
