@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Output} from './Terminal-Output/Output'
+import {Output, OutputTerminal} from './Terminal-Output/Output'
 import './App.css';
+
 
 
 
@@ -9,7 +10,8 @@ export class App extends Component<{},{inputList:string[], value:string}>{
   constructor(props:any)
   {
     super(props);
-    this.state = {inputList:["Input1", "Input2"],value:"" };
+    this.state = {inputList:["ls", "Input2"],value:""};
+
   }
 
   
@@ -35,9 +37,9 @@ export class App extends Component<{},{inputList:string[], value:string}>{
   render() {
     return (  
           <div className="App-body">
-                    {Output(this.state.inputList)}
-
         <div className="fill-space">
+        {OutputTerminal(this.state.inputList)}
+
         </div>
         <footer>
         <input  onChange={this.updateInput} onKeyDown={this.onEnterPress} type="text" value={this.state.value} ></input>

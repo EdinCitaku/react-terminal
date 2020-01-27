@@ -42,3 +42,11 @@ input[type="text"] {
 .user {
     color: green
 }
+
+.folderview {
+    color: red
+}
+
+.help {
+    margin-left: 40px;
+}
