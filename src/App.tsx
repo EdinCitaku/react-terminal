@@ -5,16 +5,10 @@ import './App.css';
 
 
 
-export class App extends Component<{},{inputList:string[], value:string, messagesEndRef: React.RefObject<HTMLDivElement>}>{
+export class App extends Component<{},{inputList:string[], value:string}>{
 
-  constructor(props:any)
-  {
-    super(props);
-    this.state = {inputList:["ls", "Input2"],value:"", messagesEndRef: React.createRef()};
-
-  }
-
-  
+  state = {inputList:["ls", "Input2"],value:""};
+  messagesEndRef = React.createRef<HTMLDivElement>();
   addList()
   {
     this.setState(prevState => ({
@@ -40,7 +34,7 @@ export class App extends Component<{},{inputList:string[], value:string, message
     this.scrollToBottom()
   }
   scrollToBottom = () => {
-    this.state.messagesEndRef.current?.scrollIntoView({ behavior: 'auto' })
+    this.messagesEndRef.current?.scrollIntoView({ behavior: 'auto' })
   }
 
   render() {
@@ -52,7 +46,7 @@ export class App extends Component<{},{inputList:string[], value:string, message
         </div>
         <footer>
         <input  onChange={this.updateInput} onKeyDown={this.onEnterPress} type="text" value={this.state.value} ></input>
-        <div ref={this.state.messagesEndRef} />
+        <div ref={this.messagesEndRef} />
         </footer>
         </div>
         
