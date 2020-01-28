@@ -1,5 +1,6 @@
 import '../App.css';
 import React, { Component } from 'react';
+import {About} from './about'
 import { render } from '@testing-library/react';
 
 export function Output(l: string[]){
@@ -11,14 +12,17 @@ export function Output(l: string[]){
 
 //We implement the folder structure as a simple dictionary!
 var folders :{[id:string]: string[];} = {
-    "": ["projects","blog"],
-    "projects":[],
-    "blog":[]
+    "~": ["projects","blog"],
+    "~/projects":[],
+    "~/blog":[]
 }
 var files :{[id:string]: string[];} = {
-    "": ["about.txt","resume.txt"],
-    "projects":["exampleproject.txt"],
-    "blog":["exampleblog.txt"]
+    "~": ["about.txt","resume.txt"],
+    "~/projects":["exampleproject.txt"],
+    "~/blog":["exampleblog.txt"]
+}
+var filecontent :{[id:string]:any}={
+    "about.txt": About
 }
 const help = <div>
     <li>Portfolio site of Edin Citaku, navigate with these commands:</li>
@@ -60,28 +64,45 @@ function executeSingleCommand(input:string, currentFolder:string):[any,string]{
         //We check if the input argument exists as a directory in our current position
         if(folders[currentFolder].indexOf(inputSplit[1])>=0)
         {
-            return [<div></div>,inputSplit[1]]
+            return [<div></div>,currentFolder+"/"+inputSplit[1]]
         }
         if(inputSplit[1]=="..")
         {
-            return [<div></div>,""]
+            return [<div></div>,"~"]
         }
         return [<div>Could not find folder {inputSplit[1]} </div>,currentFolder]
 
     }
+    if(inputSplit[0]== "cat")
+    {
+        if(inputSplit.length == 1)
+        {
+            return [<div>Need to specify an filename!</div>, currentFolder]
+        }
+        if(inputSplit.length >2)
+        {
+            return [<div>Too many arguments!</div>, currentFolder]
+        }
+        if(folders[currentFolder].indexOf(inputSplit[1])>=0)
+        {
+            return [filecontent[inputSplit[1]],inputSplit[1]]
+        }
 
+
+
+    }
 
         return [<div>DO NOT KNOW THAT COMMAND YET!</div>,currentFolder]
 }
 function executeCommandList(inputList:string[])
 {
     const output = []
-    var currentFolder = "";
+    var currentFolder = "~";
     for(let input of inputList)
     {
         const temp = executeSingleCommand(input,currentFolder)
         currentFolder = temp[1];
-        const newelement = <li><span className="user">user@Portfolio: {currentFolder}: </span>{input} <span className="input">{temp[0]}</span></li>
+        const newelement = <li><span className="user">user@Portfolio:{currentFolder}$ </span>{input} <span className="input">{temp[0]}</span></li>
         output.push(newelement);
 
     }
