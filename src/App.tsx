@@ -5,12 +5,12 @@ import './App.css';
 
 
 
-export class App extends Component<{},{inputList:string[], value:string}>{
+export class App extends Component<{},{inputList:string[], value:string, messagesEndRef: React.RefObject<HTMLDivElement>}>{
 
   constructor(props:any)
   {
     super(props);
-    this.state = {inputList:["ls", "Input2"],value:""};
+    this.state = {inputList:["ls", "Input2"],value:"", messagesEndRef: React.createRef()};
 
   }
 
@@ -33,6 +33,15 @@ export class App extends Component<{},{inputList:string[], value:string}>{
       this.addList()
     }
   }
+  componentDidMount () {
+    this.scrollToBottom()
+  }
+  componentDidUpdate () {
+    this.scrollToBottom()
+  }
+  scrollToBottom = () => {
+    this.state.messagesEndRef.current?.scrollIntoView({ behavior: 'auto' })
+  }
 
   render() {
     return (  
@@ -43,6 +52,7 @@ export class App extends Component<{},{inputList:string[], value:string}>{
         </div>
         <footer>
         <input  onChange={this.updateInput} onKeyDown={this.onEnterPress} type="text" value={this.state.value} ></input>
+        <div ref={this.state.messagesEndRef} />
         </footer>
         </div>
         
