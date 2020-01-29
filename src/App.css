@@ -22,8 +22,9 @@ input[type="text"] {
     width: 99.5%;
     color: white;
     background-color: #282c34;
-    height: 40px;
+    height: 100px;
     display: block;
+    font-size: calc(10px + 2vmin);
 }
 
 .fill-space {

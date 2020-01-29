@@ -1,6 +1,7 @@
 import '../App.css';
 import React, { Component } from 'react';
 import {About} from './about'
+import {Resume} from './resume'
 import { render } from '@testing-library/react';
 
 export function Output(l: string[]){
@@ -22,7 +23,8 @@ var files :{[id:string]: string[];} = {
     "~/blog":["exampleblog.txt"]
 }
 var filecontent :{[id:string]:any}={
-    "about.txt": About
+    "about.txt": <About/>,
+    "resume.txt":<Resume/>
 }
 const help = <div>
     <li>Portfolio site of Edin Citaku, navigate with these commands:</li>
@@ -83,12 +85,11 @@ function executeSingleCommand(input:string, currentFolder:string):[any,string]{
         {
             return [<div>Too many arguments!</div>, currentFolder]
         }
-        if(folders[currentFolder].indexOf(inputSplit[1])>=0)
+        if(files[currentFolder].indexOf(inputSplit[1])>=0)
         {
-            return [filecontent[inputSplit[1]],inputSplit[1]]
+            return [filecontent[inputSplit[1]],currentFolder]
         }
-
-
+        return [<div>Could not find file {inputSplit[1]}</div>,currentFolder]
 
     }
 
