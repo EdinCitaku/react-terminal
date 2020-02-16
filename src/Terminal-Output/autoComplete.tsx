@@ -1,27 +1,47 @@
 import React from 'react'
 import {folders, files} from './files'
+import {resolvePath} from './resolvePath'
 
 export function autoComplete(value: string, currentFolder:string) : string
 {
     const valuesplit = value.split(" ");
     if(valuesplit.length!=2) return value
-    var iterator
-    if(valuesplit[0]=="cat") iterator = files[currentFolder]
-    else if (valuesplit[0]=="cd") iterator = folders[currentFolder]
-    else return value
+    const command =  valuesplit[0]
+    if(command!="cd"&& command!="cat")return value
+    var searchedFolder
+    var searchedFile
+    var path
+
+    try {
+        [searchedFolder,searchedFile] = resolvePath(currentFolder,valuesplit[1])
+        
+    } catch (error) {
+        return value
+    }
     var matches = []
-    for(let file of iterator )
+    var iterator
+    if(command === "cat") iterator = files[searchedFolder].concat(folders[searchedFolder])
+    else iterator = folders[searchedFolder]
+        
+    for(let file of iterator)
     {
-        if(file.startsWith(valuesplit[1])) matches.push(file)
+        if(file.startsWith(searchedFile)) matches.push(file)
     }
 
     if(matches.length==0) return value
+    
+    //So our autocompletion does not delete the prefix of our search! 
+    const prefix = valuesplit[1].split("/")
+    var prefixString = ""
+    if(prefix.length > 1)prefixString = prefix.slice(0,prefix.length-1).join("/") + "/"
 
-    if(matches.length==1) return valuesplit[0] +" " +  matches[0]
+    if(matches.length==1) return command + " " + prefixString +  matches[0]
     
     // We have multible matches and will find the longest common substring
-    return valuesplit[0] + " "  + longestCommonSubstring(matches)
+    return command + " " +path+ "/" + longestCommonSubstring(matches)
 }
+
+
 function longestCommonSubstring(matches: string[]) : string
 {
     //We simply bruteforce here, mainly because in our case efficiency is not important!!!

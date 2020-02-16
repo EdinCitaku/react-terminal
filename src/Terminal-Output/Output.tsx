@@ -1,6 +1,7 @@
 import '../App.css';
 import React, { Component } from 'react';
 import {folders, files, filecontent } from './files'
+import {resolvePath} from './resolvePath'
 
 const help = <div>
     <li>Portfolio site of Edin Citaku, navigate with these commands:</li>
@@ -47,11 +48,12 @@ function executeSingleCommand(input:string, currentFolder:string):[any,string]{
             return [<div>Too many arguments!</div>, currentFolder]
         }
         //We check if the input argument exists as a directory in our current position
-        if(folders[currentFolder].indexOf(inputSplit[1])>=0)
+        var [lastFolder, toResolve] = resolvePath(currentFolder, inputSplit[1])
+        if(folders[lastFolder].indexOf(toResolve)>=0)
         {
-            return [<div></div>,currentFolder+"/"+inputSplit[1]]
+            return [<div></div>,lastFolder+"/"+toResolve]
         }
-        if(inputSplit[1]=="..")
+        if(toResolve===".." && lastFolder!='~')
         {
             return [<div></div>,"~"]
         }
@@ -68,9 +70,10 @@ function executeSingleCommand(input:string, currentFolder:string):[any,string]{
         {
             return [<div>Too many arguments!</div>, currentFolder]
         }
-        if(files[currentFolder].indexOf(inputSplit[1])>=0)
+        var [lastFolder, toResolve] = resolvePath(currentFolder, inputSplit[1])
+        if(files[lastFolder].indexOf(toResolve)>=0)
         {
-            return [filecontent[inputSplit[1]],currentFolder]
+            return [filecontent[toResolve],currentFolder]
         }
         return [<div>Could not find file {inputSplit[1]}</div>,currentFolder]
 
