@@ -6,8 +6,8 @@ The demo of the site can be found [here](https://edincitaku.netlify.com/)
 # Progress
 
 - [x] Basic functionality 
-- [] Autocomplete
-- [] Make it easier to change the different files in our shell
+- [ ] Autocomplete
+- [ ] Make it easier to change the different files in our shell
 
 # Build
 1. Install dependencies with ```yarn```
