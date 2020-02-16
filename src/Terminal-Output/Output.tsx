@@ -32,6 +32,12 @@ const help = <div>
     <li className="help">     cd [FOLDERNAME] : moves the current directory to the folder specified</li>
     <li className="help">    cat [FILENAME] : outputs the content of the specified file </li>
 </div>
+const welcome =  <div>
+<li> Welcome to the Portfolio site of Edin Citaku, navigate with these commands:</li>
+<li className="help">    ls : displays the files in the current directory </li>
+<li className="help">     cd [FOLDERNAME] : moves the current directory to the folder specified</li>
+<li className="help">    cat [FILENAME] : outputs the content of the specified file </li>
+</div>
 
 function executeSingleCommand(input:string, currentFolder:string):[any,string]{
     //Depending on our currentFolder and our input we do our command
@@ -99,6 +105,8 @@ function executeCommandList(inputList:string[])
 {
     const output = []
     var currentFolder = "~";
+    // Here we add our welcome message
+    output.push(welcome)
     for(let input of inputList)
     {
         const temp = executeSingleCommand(input,currentFolder)

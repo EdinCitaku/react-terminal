@@ -7,7 +7,7 @@ import './App.css';
 
 export class App extends Component<{},{inputList:string[], value:string}>{
 
-  state = {inputList:[],value:""};
+  state = {inputList:["ls"],value:""};
   messagesEndRef = React.createRef<HTMLDivElement>();
   addList()
   {
