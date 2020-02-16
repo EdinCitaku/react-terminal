@@ -1,19 +1,21 @@
 import React, {Component} from 'react';
-import {Output, OutputTerminal} from './Terminal-Output/Output'
+import {OutputTerminal, getCurrentFolder} from './Terminal-Output/Output'
+import {autoComplete} from './Terminal-Output/autoComplete'
 import './App.css';
 
 
 
 
-export class App extends Component<{},{inputList:string[], value:string}>{
+export class App extends Component<{},{inputList:string[], value:string, currentFolder:string}>{
 
-  state = {inputList:["ls"],value:""};
+  state = {inputList:["ls"],value:"", currentFolder:"~"};
   messagesEndRef = React.createRef<HTMLDivElement>();
   addList()
   {
     this.setState(prevState => ({
       inputList: [...prevState.inputList, prevState.value],
-      value: ""
+      value: "",
+      currentFolder: getCurrentFolder([...prevState.inputList, prevState.value])
     }))
   }
   updateInput = (event: React.ChangeEvent<HTMLInputElement>)=> {
@@ -21,11 +23,20 @@ export class App extends Component<{},{inputList:string[], value:string}>{
       value: event.target.value
     })
   }
+
   onEnterPress = (e:any) => {
     if(e.keyCode == 13) {
       if(this.state.value!="")
       this.addList()
     }
+    if (e.key === "Tab") {
+      e.preventDefault();
+      //Autocomplete happens here
+      this.setState({
+        value: autoComplete(this.state.value,this.state.currentFolder)
+      })
+    }
+
   }
   componentDidMount () {
     this.scrollToBottom()

@@ -1,31 +1,7 @@
 import '../App.css';
 import React, { Component } from 'react';
-import {About} from './about'
-import {Resume} from './resume'
-import { render } from '@testing-library/react';
+import {folders, files, filecontent } from './files'
 
-export function Output(l: string[]){
-    const items = l.map(item => <li><span className="user">user@Portfolio: </span><span className="input">{item}</span></li>)
-    return <div className="output"> {items}
-    </div>;
-}
-
-
-//We implement the folder structure as a simple dictionary!
-var folders :{[id:string]: string[];} = {
-    "~": ["projects","blog"],
-    "~/projects":[],
-    "~/blog":[]
-}
-var files :{[id:string]: string[];} = {
-    "~": ["about.txt","resume.txt"],
-    "~/projects":["exampleproject.txt"],
-    "~/blog":["exampleblog.txt"]
-}
-var filecontent :{[id:string]:any}={
-    "about.txt": <About/>,
-    "resume.txt":<Resume/>
-}
 const help = <div>
     <li>Portfolio site of Edin Citaku, navigate with these commands:</li>
     <li className="help">    ls : displays the files in the current directory </li>
@@ -38,6 +14,7 @@ const welcome =  <div>
 <li className="help">     cd [FOLDERNAME] : moves the current directory to the folder specified</li>
 <li className="help">    cat [FILENAME] : outputs the content of the specified file </li>
 </div>
+
 
 function executeSingleCommand(input:string, currentFolder:string):[any,string]{
     //Depending on our currentFolder and our input we do our command
@@ -101,7 +78,8 @@ function executeSingleCommand(input:string, currentFolder:string):[any,string]{
 
         return [<div>DO NOT KNOW THAT COMMAND YET!</div>,currentFolder]
 }
-function executeCommandList(inputList:string[])
+
+function executeCommandList(inputList:string[]):[any,string]
 {
     const output = []
     var currentFolder = "~";
@@ -115,10 +93,16 @@ function executeCommandList(inputList:string[])
         output.push(newelement);
 
     }
-    return output;
+    return [output,currentFolder];
+}
+
+export function getCurrentFolder(inputList:string[]):string
+{
+    return executeCommandList(inputList)[1]
 }
 
 export function OutputTerminal(inputList:string[])
 {
-    return executeCommandList(inputList)
-    }   
+    return executeCommandList(inputList)[0]
+    }  
+
