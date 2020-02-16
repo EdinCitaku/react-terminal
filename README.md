@@ -6,7 +6,7 @@ The demo of the site can be found [here](https://edincitaku.netlify.com/)
 # Progress
 
 - [x] Basic functionality 
-- [ ] Autocomplete
+- [x] Autocomplete
 - [ ] Make it easier to change the different files in our shell
 
 # Build
