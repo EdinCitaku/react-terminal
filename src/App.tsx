@@ -5,7 +5,6 @@ import './App.css';
 
 
 
-
 export class App extends Component<{},{inputList:string[], value:string, currentFolder:string}>{
 
   state = {inputList:["ls"],value:"", currentFolder:"~"};

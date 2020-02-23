@@ -1,5 +1,5 @@
 import '../App.css';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {folders, files, filecontent } from './files'
 import {resolvePath} from './resolvePath'
 
