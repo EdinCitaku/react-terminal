@@ -8,6 +8,8 @@ const help = <div>
     <li className="help">    ls : displays the files in the current directory </li>
     <li className="help">     cd [FOLDERNAME] : moves the current directory to the folder specified</li>
     <li className="help">    cat [FILENAME] : outputs the content of the specified file </li>
+    <li className="help">    click TAB for autocomplete </li>
+
 </div>
 const welcome =  <div>
 <li> Welcome to the Portfolio site of Edin Citaku, navigate with these commands:</li>
