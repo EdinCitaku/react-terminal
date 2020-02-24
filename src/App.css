@@ -53,3 +53,6 @@ input[type="text"] {
 .help {
     margin-left: 40px;
 }
+li{
+    list-style-type: none;
+}
