@@ -1,5 +1,5 @@
 .App-body {
-    background-color: #282c34;
+    background-color: #181818;
     font-size: calc(10px + 2vmin);
     color: rgb(184, 180, 180);
     display: flex;
@@ -9,7 +9,7 @@
 
 html,
 body {
-    background-color: #282c34;
+    background-color: #181818;
     height: 100%;
     width: 100%;
 }
@@ -21,22 +21,24 @@ body {
 input[type="text"] {
     width: 99.5%;
     color: white;
-    background-color: #282c34;
+    background-color: #181818;
     height: 100px;
     display: block;
     font-size: calc(10px + 2vmin);
+    font-family: Liberation Mono, monospace;
+
 }
 
 .fill-space {
     width: 95%;
-    background-color: #282c34;
+    background-color: #181818;
     flex: 1 1 auto;
 }
 
 .output {
     padding: 4px;
     text-align: left;
-    background-color: #282c34;
+    background-color: #181818;
     color: white;
 }
 
