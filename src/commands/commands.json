@@ -1,3 +1,5 @@
 {
-  "about": "# React & Markdown App\n* Benefits of using React... but...\n* Write layout in Markdown!"
+  "about": "Welcome to my homepage! I am Edin Citaku, a Computer Science student from munich, currently interning at [Jetbrains](https://www.jetbrains.com/)!\nI love anything related to software development, technology, science and lifestyle. I LOVE fighting sports and also enjoy cooking, gardening and love tea!\nSo you might find content about all these topics on my blog!\n This is my github: https://github.com/EdinCitaku",
+  "reactterminal": "# REACT-TERMINAL \n I wrote a portfolio site on react that simulates a linux shell with simple commands like \"ls\", \"cd\" and \"cat\".\n Link: https://github.com/EdinCitaku/react-terminal",
+  "annnotebooks": "# ANN-NOTEBOOKS \n A collections of iPython notebooks that explain concepts in artificial neural networks.\nI implemented a neural network from scratch and also used keras to solve some learning tasks.\n Link: https://github.com/EdinCitaku/ANN-notebooks\n"
 }

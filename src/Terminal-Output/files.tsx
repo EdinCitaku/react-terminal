@@ -1,5 +1,5 @@
 import React from 'react'
-import {About} from './about'
+import {About, AnnNotebooks, ReactTerminal} from './folderContent'
 import {Resume} from './resume'
 
 //We implement the folder structure as a simple dictionary!
@@ -8,12 +8,15 @@ export var folders :{[id:string]: string[];} = {
     "~/projects":[],
     "~/blog":[]
 }
+
 export var files :{[id:string]: string[];} = {
     "~": ["about.txt","resume.txt"],
-    "~/projects":["exampleproject.txt"],
-    "~/blog":["exampleblog.txt"]
+    "~/projects":["react-terminal.txt", "ann_notebooks.txt"],
+    "~/blog":[]
 }
 export var filecontent :{[id:string]:any}={
     "about.txt": <About/>,
-    "resume.txt":<Resume/>
+    "resume.txt":<Resume/>,
+    "react-terminal.txt": <AnnNotebooks/>,
+    "ann_notebooks.txt": <ReactTerminal/>
 }
