@@ -23,7 +23,7 @@ const welcome =  <div>
 function executeSingleCommand(input:string, currentFolder:string):[any,string]{
     //Depending on our currentFolder and our input we do our command
     const inputSplit = input.split(" ");
-    if(inputSplit[0] == "ls"){
+    if(inputSplit[0] == "ls"||(inputSplit[0]=="ll")){
         
         const folderlist = folders[currentFolder].map(item => {
             return <div className="folderview">{item}</div> 
