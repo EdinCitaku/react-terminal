@@ -17,6 +17,6 @@ export var files :{[id:string]: string[];} = {
 export var filecontent :{[id:string]:any}={
     "about.txt": <About/>,
     "resume.txt":<Resume/>,
-    "react-terminal.txt": <AnnNotebooks/>,
-    "ann_notebooks.txt": <ReactTerminal/>
+    "react-terminal.txt": <ReactTerminal/>,
+    "ann_notebooks.txt": <AnnNotebooks/>
 }
