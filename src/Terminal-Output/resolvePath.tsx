@@ -5,6 +5,11 @@ export function resolvePath(currentFolder:string, path:string):[string,string]
 {
     //Very minimal function because we never will have deeper file depth!
     //We can later make it more complicated if needed!
+
+    //TODO (ToluAta):  
+    //dirty check to fix the undefined error 
+    if(path.length == 0) return [currentFolder, "$"]
+
     const pathSplit = path.split("/")
     if(pathSplit.length==1) return [currentFolder,path]
     var stepFolder = currentFolder

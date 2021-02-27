@@ -20,7 +20,7 @@ body {
 
 input[type="text"] {
     width: 99.5%;
-    color: white;
+    color: rgb(184, 180, 180);
     background-color: #181818;
     height: 100px;
     display: block;
@@ -39,15 +39,15 @@ input[type="text"] {
     padding: 4px;
     text-align: left;
     background-color: #181818;
-    color: white;
+    color: rgb(184, 180, 180);
 }
 
 .user {
-    color: green
+    color: rgb(4, 128, 0)
 }
 
 .folderview {
-    color: red
+    color: #b4291c
 }
 
 .help {
