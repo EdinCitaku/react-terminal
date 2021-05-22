@@ -1,0 +1,1 @@
+{"path":"pages","name":"pages","type":"folder","children":[{"path":"pages/out","name":"out","type":"folder","children":[]},{"path":"pages/test.txt","name":"test.txt","type":"file","content":"dsadsasadsad"}]}

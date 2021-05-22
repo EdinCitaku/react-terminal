@@ -4,7 +4,7 @@ import {about} from '../commands/commands.json'
 import {reactterminal} from '../commands/commands.json'
 
 
-import React, {Component} from 'react'
+import React from 'react'
 
 export function About()
 {

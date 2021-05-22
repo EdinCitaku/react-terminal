@@ -1,5 +1,5 @@
 import '../App.css';
-import React, {Component} from 'react';
+import React from 'react';
 import {folders, files, filecontent } from './files'
 import {resolvePath} from './resolvePath'
 
@@ -23,7 +23,7 @@ const welcome =  <div>
 function executeSingleCommand(input:string, currentFolder:string):[any,string]{
     //Depending on our currentFolder and our input we do our command
     const inputSplit = input.split(" ");
-    if(inputSplit[0] == "ls"||(inputSplit[0]=="ll")){
+    if(inputSplit[0] === "ls"||(inputSplit[0]==="ll")){
         
         const folderlist = folders[currentFolder].map(item => {
             return <div className="folderview">{item}</div> 
@@ -35,14 +35,14 @@ function executeSingleCommand(input:string, currentFolder:string):[any,string]{
         return [<div>{folderlist}{filelist}</div>, currentFolder]
         
     }
-    if(inputSplit[0] == "help")
+    if(inputSplit[0] ==="help")
     {
         if(inputSplit.length>1) return [<div>Help does not take any arguments!</div>,""]
         return [help,currentFolder]
     }
-    if(inputSplit[0] == "cd")
+    if(inputSplit[0] === "cd")
     {
-        if(inputSplit.length == 1)
+        if(inputSplit.length === 1)
         {
             return [<div>Need to specify an foldername!</div>, currentFolder]
         }
@@ -56,16 +56,16 @@ function executeSingleCommand(input:string, currentFolder:string):[any,string]{
         {
             return [<div></div>,lastFolder+"/"+toResolve]
         }
-        if(toResolve===".." && lastFolder!='~')
+        if(toResolve===".." && lastFolder!=='~')
         {
             return [<div></div>,"~"]
         }
         return [<div>Could not find folder {inputSplit[1]} </div>,currentFolder]
 
     }
-    if(inputSplit[0]== "cat")
+    if(inputSplit[0]=== "cat")
     {
-        if(inputSplit.length == 1)
+        if(inputSplit.length === 1)
         {
             return [<div>Need to specify an filename!</div>, currentFolder]
         }

@@ -24,8 +24,8 @@ export class App extends Component<{},{inputList:string[], value:string, current
   }
 
   onEnterPress = (e:any) => {
-    if(e.keyCode == 13) {
-      if(this.state.value!="")
+    if(e.keyCode === 13) {
+      if(this.state.value!=="")
       this.addList()
     }
     if (e.key === "Tab") {
