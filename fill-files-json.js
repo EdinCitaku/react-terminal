@@ -1,5 +1,5 @@
-var fs = require('fs'),
-path = require('path')
+const fs = require('fs');
+const path = require('path');
 
 function dirTree(filename) {
     var stats = fs.lstatSync(filename),

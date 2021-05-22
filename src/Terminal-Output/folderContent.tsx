@@ -6,20 +6,18 @@ import {reactterminal} from '../commands/commands.json'
 
 import React from 'react'
 
-export function About()
-{
-  return <ReactMarkdown source={about}  escapeHtml={true} />
-
-}
-export function AnnNotebooks()
-{
-  return <ReactMarkdown source={annnotebooks}  escapeHtml={true} />
+export function About() {
+    return <ReactMarkdown source={about} escapeHtml={true}/>
 
 }
 
-export function ReactTerminal()
-{
-  return <ReactMarkdown source={reactterminal}  escapeHtml={true} />
+export function AnnNotebooks() {
+    return <ReactMarkdown source={annnotebooks} escapeHtml={true}/>
+
+}
+
+export function ReactTerminal() {
+    return <ReactMarkdown source={reactterminal} escapeHtml={true}/>
 
 }
 
